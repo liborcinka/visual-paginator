@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace LiborCinka;
 
 use Nette\Application\UI\Control;
 use Nette\Utils\Paginator;
@@ -14,27 +14,18 @@ class VisualPaginator extends Control
 	private $paginator;
 
 	/** @persistent */
-	public $page = 1;
+	public int $page = 1;
 
-	private $displaySteps = true;
+	private bool $displaySteps = true;
 
-	/**
-	 * @return Paginator
-	 */
 	public function getPaginator(): Paginator
 	{
-		if (isset($this->paginator)) {
+		if (!isset($this->paginator)) {
 			$this->paginator = new Paginator;
 		}
 		return $this->paginator;
 	}
 
-
-
-	/**
-	 * Renders paginator.
-	 * @return void
-	 */
 	public function render(): void
 	{
 		$paginator = $this->getPaginator();
@@ -68,8 +59,6 @@ class VisualPaginator extends Control
 
 	/**
 	 * Loads state informations.
-	 * @param array $params
-	 * @return void
 	 */
 	public function loadState(array $params): void
 	{
